@@ -59,7 +59,7 @@ int main()
 
             do
             { 
-                printf("\n  Press:\n \t[1] to view the instructions\n\t[2] to go to the timer\n\t[3] to exit the program\n  Enter your choice here: ");
+                printf("\n  Press:\n\t[1] to view the instructions\n\t[2] to go to the timer\n\t[3] to exit the program\n  Enter your choice here: ");
                 scanf("%d", &modeMain);
             }while(modeMain != 1 && modeMain != 2 && modeMain != 3);
         } 
@@ -71,19 +71,19 @@ int main()
             printf("The technique uses a timer to break down work into intervals, separated by short breaks.\n");
             printf("Traditionally, work sessions are broken up into 25 minute interval with a 5 minute break in between each interval.\n\n");
 
-            printf("You will be able to choose the number of intervals you want to work for and how long you want each of those intervals to be.\n");
-            printf("The breaks will be automatically calculated to be roughly a fourth of the work time (This has been shown to be the ideal break length)\n");
+            printf("You will be able to choose the number of intervals you want to work for and how long you want each of those intervals.\n");
+            printf("The breaks will be automatically calculated to be roughly a fourth of the work time (This has been shown to be the ideal)\n");
             printf("The timer will then count down the time for each interval and break.\n");
             printf("When the timer is done, you will be able to choose whether you want to continue working or stop.\n\n");
-            printf("If you want to stop the timer before it is done, you will be able to do so.\n");
+            printf("If you want to stop the timer before it is done, you will be able to do so.\n\n");
 
-            printf("Note: The maximum number of hours you can work for is 24 hours because... well frankly doing more than that is deeply concerning.\n\n");
+            printf("Note: The maximum number of hours you can work for is 24 hours because... well frankly doing more than that is concerning.\n\n");
 
             do
             {
-                printf("Press 0 to go back to the main menu\n");
+                printf("\n  Press:\n\t[0] to go back to the main menu\n\t[3] to exit the program\n  Enter your choice here:");
                 scanf("%d", &modeMain);
-            } while (modeMain != 0);
+            } while (modeMain != 0 && modeMain != 3);
             
             
         }
@@ -95,7 +95,7 @@ int main()
             {
                 do
                 {
-                    printf("Press 0 to go back to the main menu, 1 to edit the session, or 2 to start the session\n");
+                    printf("\n  Press:\n\t[0] to go back to the main menu\n\t[1] to edit the session\n\t[2] to start the session\n  Enter your choice here: ");
                     scanf("%d", &modeTimer);
                 } while (modeTimer != 0 && modeTimer != 1 && modeTimer != 2);
 
