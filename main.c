@@ -15,17 +15,20 @@ https://github.com/HACKER097/wisdom-tree
 int main()
 {
     int flag = 1;
-    int mode;
+    int timerActive = 0;
+    int modeMain;
+    int modeTimer;
+    int rawTime;
 
     while (flag)
     {
         do
         {
-            printf("Press 0 to view the instructions, 1 to go to the timer, and 2 to exit the program.\n");
-            scanf("%d", &mode);
-        }while(mode != 0 && mode != 1 && mode != 2);
+            printf("Press 0 to view the instructions, 1 to go to the timer, or 2 to exit the program.\n");
+            scanf("%d", &modeMain);
+        }while(modeMain != 0 && modeMain != 1 && modeMain != 2);
 
-        if (mode == 0)
+        if (modeMain == 0)
         {
             printf("\nThe Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s.\n");
             printf("The technique uses a timer to break down work into intervals, separated by short breaks.\n");
@@ -35,23 +38,54 @@ int main()
             printf("You will also be able to choose how long you want your breaks to be.\n");
             printf("The timer will then count down the time for each interval and break.\n");
             printf("When the timer is done, you will be able to choose whether you want to continue working or stop.\n\n");
+            printf("If you want to stop the timer before it is done, you will be able to do so.\n");
 
-            printf("Note: If you want to stop the timer before it is done, you will be able to do so.\n\n");
+            printf("Note: The maximum number of hours you can work for is 24 hours because... well frankly doing more than that is deeply concerning.\n\n");
 
             do
             {
-                printf("Press 0 to go back to the main menu or 2 to exit the program.\n");
-                scanf("%d", &mode);
-            } while (mode != 0 && mode != 2);
+                printf("Press 0 to go back to the main menu\n");
+                scanf("%d", &modeMain);
+            } while (modeMain != 0);
             
             
         }
-        else if (mode == 1)
+        else if (modeMain == 1)
         {
             printf("You have chosen to go to the timer.\n");
+
+            if (timerActive == 0)
+            {
+                do
+                {
+                    printf("Press 0 to go back to the main menu, 1 to edit the session, or 2 to start the session\n");
+                    scanf("%d", &modeTimer);
+                } while (modeTimer != 0 && modeTimer != 1 && modeTimer != 2);
+
+                if (modeTimer == 0)
+                {
+                    modeMain = 0;
+                    continue;
+                }
+                else if (modeTimer == 1)
+                {
+                    printf("Please enter the number of intervals you want to work for.\n");
+                    scanf("%d", &rawTime);
+                    printf("Please enter the length of each interval in minutes.\n");
+                    scanf("%d", &rawTime);
+                    printf("Please enter the length of each break in minutes.\n");
+                    scanf("%d", &rawTime);
+                }
+            }
+            else
+            {
+                printf("You have already started the timer.\n");
+            }
+            
+
         }
         
-        if (mode == 2)
+        if (modeMain == 2)
         {
             printf("You have chosen to exit the program.\n");
             flag = 0;
