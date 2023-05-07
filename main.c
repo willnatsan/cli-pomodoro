@@ -11,11 +11,15 @@ https://github.com/HACKER097/wisdom-tree
 */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <unistd.h>
 
 int main()
 {
     int flag = 1;
     int timerActive = 0;
+    int timerPaused = 0;
 
     int modeMain = 0;
     int modeTimer;
@@ -33,8 +37,11 @@ int main()
     //     int secondsBreak;
     // }time;
 
+    int count = 0;
     while (flag)
     {
+        system("cls");
+
         if (modeMain == 0)
         {
             printf("\t\t       __      __       .__                               \n");
@@ -89,7 +96,7 @@ int main()
         }
         else if (modeMain == 2)
         {
-            printf("You have chosen to go to the timer.\n");
+            printf("\nYou have chosen to go to the timer.\n");
 
             if (timerActive == 0)
             {
@@ -113,12 +120,58 @@ int main()
                     printf("Please enter the length of each break in minutes.\n");
                     scanf("%d", &rawTime);
                 }
+                else
+                {
+                    printf("\nYou have chosen to start the timer.\n");
+                    timerActive = 1;
+                    
+                }
             }
             else
             {
-                printf("You have already started the timer.\n");
+                if (timerPaused)
+                {
+                    printf("\n  The timer is paused.\n");
+                    printf("\n  Press:\n\t'c' to continue the timer\n\t'e' to end the timer\n");
+                    if (kbhit())
+                    {
+                        switch (getch())
+                        {
+                        case 'c':
+                            printf("\nYou have chosen to continue the timer.\n");
+                            timerPaused = 0;
+                            break;
+                        case 'e':
+                            printf("\nYou have chosen to end the timer.\n");
+                            timerActive = 0;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    printf("\n  Timer: %d\n", count);
+                    count++;
 
+                    printf("\n  Press:\n\t'p' to pause the timer\n\t'e' to end the timer\n");
+                    if (kbhit())
+                    {
+                        switch (getch())
+                        {
+                        case 'p':
+                            printf("You have chosen to pause the timer.\n");
+                            timerPaused = 1;
+                            break;
+                        case 'e':       
+                            printf("You have chosen to end the timer.\n");
+                            timerActive = 0;
+                            break;
+                        }
+                    }
+                }
+                
             }
+            sleep(1);
         }
         
         if (modeMain == 3)
