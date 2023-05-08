@@ -15,6 +15,31 @@ https://github.com/HACKER097/wisdom-tree
 #include <conio.h>
 #include <unistd.h>
 
+typedef struct session
+{
+    int numIntervals = 4;
+    int rawWorkTime = 25;
+    int rawBreakTime = 5;
+
+    int hoursWork;
+    int minutesWork;
+    int secondsWork;
+
+    int hoursBreak;
+    int minutesBreak;
+    int secondsBreak;
+}session;
+
+typedef struct timeArt
+{
+    char line0[40];
+    char line1[40];
+    char line2[40];
+    char line3[40];
+    char line4[40];
+    char line5[40];
+}timeArt;
+
 int main()
 {
     int flag = 1;
@@ -24,20 +49,9 @@ int main()
     int modeMain = 0;
     int modeTimer;
 
-    int rawTime;
+    struct session sessionCurr;
+    struct timeArt time;
 
-    // typedef struct time
-    // {
-    //     int hoursWork;
-    //     int minutesWork;
-    //     int secondsWork;
-
-    //     int hoursBreak;
-    //     int minutesBreak;
-    //     int secondsBreak;
-    // }time;
-
-    int count = 0;
     while (flag)
     {
         system("cls");
@@ -113,12 +127,20 @@ int main()
                 }
                 else if (modeTimer == 1)
                 {
-                    printf("Please enter the number of intervals you want to work for.\n");
-                    scanf("%d", &rawTime);
-                    printf("Please enter the length of each interval in minutes.\n");
-                    scanf("%d", &rawTime);
-                    printf("Please enter the length of each break in minutes.\n");
-                    scanf("%d", &rawTime);
+                    printf("Please enter the number of intervals you want to work for: ");
+                    scanf("%d", &sessionCurr.numIntervals);
+                    printf("Please enter the length of each interval in minutes: ");
+                    scanf("%d", &sessionCurr.rawWorkTime);
+                    printf("Please enter the length of each break in minutes: ");
+                    scanf("%d", &sessionCurr.rawBreakTime);
+
+                    sessionCurr.hoursWork = ;
+                    sessionCurr.minutesWork = ;
+                    sessionCurr.secondsWork = ;
+
+                    sessionCurr.hoursBreak = ;
+                    sessionCurr.minutesBreak = ;
+                    sessionCurr.secondsBreak = ;
                 }
                 else
                 {
@@ -150,9 +172,6 @@ int main()
                 }
                 else
                 {
-                    printf("\n  Timer: %d\n", count);
-                    count++;
-
                     printf("\n  Press:\n\t'p' to pause the timer\n\t'e' to end the timer\n");
                     if (kbhit())
                     {
@@ -180,4 +199,99 @@ int main()
             flag = 0;
         }
     }
+}
+
+struct timeArt createTimeArt(char time[6])
+{
+    struct timeArt ta;
+
+    for (int i = 0; i < 6; i++)
+    {
+        switch (time[i])
+        {
+        case 0:
+            strcat(ta.line0, " 000000 \n");
+            strcat(ta.line1, "00    00\n");
+            strcat(ta.line2, "00    00\n");
+            strcat(ta.line3, "00    00\n");
+            strcat(ta.line4, "00    00\n");
+            strcat(ta.line5, " 000000 \n");
+            break;
+        case 1: 
+            strcat(ta.line0, "11111   \n");
+            strcat(ta.line1, "   11   \n");
+            strcat(ta.line2, "   11   \n");
+            strcat(ta.line3, "   11   \n");
+            strcat(ta.line4, "   11   \n");
+            strcat(ta.line5, "11111111\n");
+            break;
+        case 2:
+            strcat(ta.line0, " 222222 \n");
+            strcat(ta.line1, "22    22\n");
+            strcat(ta.line2, "     22 \n");
+            strcat(ta.line3, "   22   \n");
+            strcat(ta.line4, " 22     \n");
+            strcat(ta.line5, "22222222\n");
+            break;
+        case 3:
+            strcat(ta.line0, " 333333 \n");
+            strcat(ta.line1, "33    33\n");
+            strcat(ta.line2, "     33 \n");
+            strcat(ta.line3, "   333  \n");
+            strcat(ta.line4, "33    33\n");
+            strcat(ta.line5, " 333333 \n");
+            break;
+        case 4:
+            strcat(ta.line0, "44    44\n");
+            strcat(ta.line1, "44    44\n");
+            strcat(ta.line2, "44444444\n");
+            strcat(ta.line3, "      44\n");
+            strcat(ta.line4, "      44\n");
+            strcat(ta.line5, "      44\n");
+            break;
+        case 5:
+            strcat(ta.line0, "55555555\n");
+            strcat(ta.line1, "55      \n");
+            strcat(ta.line2, "5555555 \n");
+            strcat(ta.line3, "      55\n");
+            strcat(ta.line4, "      55\n");
+            strcat(ta.line5, "5555555 \n");
+            break;
+        case 6: 
+            strcat(ta.line0, " 666666 \n");
+            strcat(ta.line1, "66      \n");
+            strcat(ta.line2, "6666666 \n");
+            strcat(ta.line3, "66    66\n");
+            strcat(ta.line4, "66    66\n");
+            strcat(ta.line5, " 666666 \n");
+            break;
+        case 7:
+            strcat(ta.line0, "77777777\n");
+            strcat(ta.line1, "      77\n");
+            strcat(ta.line2, "     77 \n");
+            strcat(ta.line3, "    77  \n");
+            strcat(ta.line4, "   77   \n");
+            strcat(ta.line5, "  77    \n");
+            break;
+        case 8:
+            strcat(ta.line0, " 888888 \n");
+            strcat(ta.line1, "88    88\n");
+            strcat(ta.line2, " 888888 \n");
+            strcat(ta.line3, "88    88\n");
+            strcat(ta.line4, "88    88\n");
+            strcat(ta.line5, " 888888 \n");
+            break;
+        case 9:
+            strcat(ta.line0, " 999999 \n");
+            strcat(ta.line1, "99    99\n");
+            strcat(ta.line2, "99    99\n");
+            strcat(ta.line3, " 9999999\n");
+            strcat(ta.line4, "      99\n");
+            strcat(ta.line5, " 999999 \n");
+            break;
+        default:
+            break;
+        }
+    }
+    return ta;
 }
