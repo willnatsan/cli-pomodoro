@@ -128,7 +128,7 @@ int main()
             // Print the main menu options and get the user's choice, ensure that the user enters a valid choice
             do
             {
-                printf("\n  Press:\n\t[0] to go back to the main menu\n\t[4] to exit the program\n  Enter your choice here:");
+                printf("\n  Press:\n\t[0] to go back to the main menu\n\t[4] to exit the program\n  Enter your choice here: ");
                 scanf("%d", &modeMain);
             } while (modeMain != 0 && modeMain != 4);
             
