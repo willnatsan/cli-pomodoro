@@ -1,2 +1,2 @@
-# cli-pomodoro
+# CLI Pomodoro
  
